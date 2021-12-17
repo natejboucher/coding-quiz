@@ -1,2 +1,2 @@
 # coding-quiz
-Timed web development quiz.
+## Timed web development quiz.
