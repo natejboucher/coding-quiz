@@ -3,8 +3,14 @@ var questionEl = document.getElementById('questions');
 var answersEl = document.getElementById('answers');
 var startQuizBtn = document.getElementById('start-button');
 var answerAlert = document.getElementById('response-text');
-var timeLeft = 60;
+var timeLeft = 3;
 let i = 0;
+
+
+
+//highscore data
+
+
 
 // question objects array
 const questions = [
@@ -65,9 +71,22 @@ function answerBtnHandler(event)    {
         reduceTimer();
     }
 }
+//end game function
 function endGame()  {
-    console.log("This works");
+    answersEl.innerHTML = "";
+    
+    var nameForm = document.getElementById("test");
+    nameForm.removeAttribute("class");
+    
+
+    var submitHighScore = document.createElement("button");
+    submitHighScore.textContent = "Submit your score!";
+    submitHighScore.className = "btn";
+    answersEl.appendChild(submitHighScore);
 }
+
+// save score
+
 
 // function to control countdown
 function countDown()  {
@@ -77,9 +96,10 @@ function countDown()  {
             timerEl.textContent = 'Time: ' + timeLeft;
             timeLeft--;
         } else  {
-            timerEl.textContent = ' ';
+            timerEl.textContent = '0';
             //exit the interval
             clearInterval(timeInterval);
+            endGame();
         }
     }, 1000);
 }
@@ -91,13 +111,11 @@ function reduceTimer()  {
         timeLeft = (timeLeft - 10);
     }
 }
-
 //function for questions
 function loadQuestion()    {
     answersEl.innerHTML = "";
     //display question
     questionEl.textContent = questions[i].question;
-
     //generate answer buttons
     var answerOneEl = document.createElement("button");
     answerOneEl.textContent = questions[i].answerOne;

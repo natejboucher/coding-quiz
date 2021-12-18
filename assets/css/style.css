@@ -105,7 +105,7 @@ header {
 }
 
 .correct-btn    {
-    
+
 }
 
 .btn {
@@ -139,6 +139,14 @@ button[disabled] {
     font-size: 26px;
     color: hsl(206, 17%, 28%);
     opacity: .7;
+}
+
+.hidden {
+    display:none;
+}
+
+.visible    {
+    display: block;
 }
 /*
 .response-area p    {
