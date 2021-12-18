@@ -91,6 +91,8 @@ header {
 
 .card-footer {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-header    {
@@ -99,9 +101,15 @@ header {
 
 .quiz-area  {
     min-height: 350px;
+    text-align: center;
+}
+
+.correct-btn    {
+    
 }
 
 .btn {
+  display: flex;
   border: none;
   background-color: hsl(360, 91%, 36%);
   border-radius: 25px;
@@ -126,7 +134,18 @@ button[disabled] {
   float: right;
 }
 
-
+.response-area  {
+    text-align: center;
+    font-size: 26px;
+    color: hsl(206, 17%, 28%);
+    opacity: .7;
+}
+/*
+.response-area p    {
+    border-bottom: 2px solid;
+    border-color:hsl(206, 17%, 28%) .7;
+}
+*/
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
