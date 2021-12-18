@@ -95,7 +95,11 @@ function firstQuestion()    {
     answerFourEl.textContent = questionOne.answerFour;
     answerFourEl.className = "btn";
     answersEl.appendChild(answerFourEl);
-    //function for selecting answer
+
+    //function for selecting result from answerBtnHandler
+    if ()  {
+        console.log("This will load the next question");
+    }
 }
 //function for second question
 
