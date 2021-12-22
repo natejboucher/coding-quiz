@@ -31,6 +31,7 @@ body {
 
 header {
   display: flex;
+  flex: wrap;
   justify-content: space-between;
   text-align: center;
   padding: 20px;
@@ -62,6 +63,7 @@ header {
 }
 
 .header-title h1    {
+    font-size: 2.0rem;
     margin: auto;
 }
 
@@ -75,7 +77,6 @@ header {
 .countdown-container h2    {
     margin: auto;
 }
-
 
 .card {
   background-color: hsla(0, 0%, 18%, 0.9);
@@ -108,15 +109,11 @@ header {
     text-align: center;
 }
 
-.correct-btn    {
-
-}
-
 .btn {
   display: flex;
   border: none;
   background-color: rgb(37, 124, 73);
-  border-radius: 25px;
+  border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
   color: hsl(0, 0%, 100%);
@@ -152,13 +149,30 @@ button[disabled] {
 .visible    {
     display: block;
 }
-/*
-.response-area p    {
-    border-bottom: 2px solid;
-    border-color:hsl(206, 17%, 28%) .7;
-}
-*/
+
 @media (max-width: 690px) {
+  .header-style {
+    flex-direction: column;
+    text-align: center;
+  }
+  .header-title {
+    font-size: 0.8rem;
+    width: 100%;
+    margin: auto;
+  }
+
+  .countdown-container  {
+    flex: wrap;
+    width: 40%;
+    margin: auto;
+  }
+
+  .highscore-container  {
+    flex: wrap;
+    width: 40%;
+    margin: auto;
+  }
+
   .btn {
     font-size: 1rem;
     margin: 16px 0px 0px 0px;
