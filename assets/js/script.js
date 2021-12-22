@@ -3,14 +3,9 @@ var questionEl = document.getElementById('questions');
 var answersEl = document.getElementById('answers');
 var startQuizBtn = document.getElementById('start-button');
 var answerAlert = document.getElementById('response-text');
-var timeLeft = 3;
+var timeLeft = 60;
 let i = 0;
-
-
-
-//highscore data
-
-
+var timeInterval;
 
 // question objects array
 const questions = [
@@ -62,6 +57,7 @@ function answerBtnHandler(event)    {
         answerAlert.textContent = "Correct!";
         i++;
         if (i === 5 || timeLeft === 0)  {
+            clearInterval(timeInterval);
             endGame();
         } else {
             loadQuestion();
@@ -71,10 +67,11 @@ function answerBtnHandler(event)    {
         reduceTimer();
     }
 }
+
 //end game function
 function endGame()  {
     answersEl.innerHTML = "";
-    
+    questionEl.innerHTML = "";
     var nameForm = document.getElementById("test");
     nameForm.removeAttribute("class");
     
@@ -82,18 +79,17 @@ function endGame()  {
     var submitHighScore = document.createElement("button");
     submitHighScore.textContent = "Submit your score!";
     submitHighScore.className = "btn";
+    submitHighScore.addEventListener("click", saveScore);
     answersEl.appendChild(submitHighScore);
 }
-
-// save score
 
 
 // function to control countdown
 function countDown()  {
     // set interval method 
-    var timeInterval = setInterval(function()   {
+    timeInterval = setInterval(function()   {
         if (timeLeft > 1)   {
-            timerEl.textContent = 'Time: ' + timeLeft;
+            timerEl.textContent = '/time: ' + timeLeft;
             timeLeft--;
         } else  {
             timerEl.textContent = '0';
@@ -104,13 +100,13 @@ function countDown()  {
     }, 1000);
 }
 
-
-//function to reduce timer and display wrong answer
+//function to reduce timer
 function reduceTimer()  {
     if (timeLeft > 10)  {
         timeLeft = (timeLeft - 10);
     }
 }
+
 //function for questions
 function loadQuestion()    {
     answersEl.innerHTML = "";
@@ -142,6 +138,20 @@ function loadQuestion()    {
 function removeStartBtn()  {
     var taskSelected = document.querySelector('#start-button');
     taskSelected.remove();
+}
+
+//record high score function
+function saveScore()  {
+    var playerData = JSON.parse(localStorage.getItem("highScores")) || [];
+    var initialsEl = document.getElementById("initials");
+    var initials = initialsEl.value;
+    var score = {
+        initials: initials,
+        score: timeLeft
+    };
+    playerData.push(score);
+    localStorage.setItem("highScores", JSON.stringify(playerData));
+    location.href = "highscores.html";
 }
 
 // quiz function
