@@ -18,7 +18,7 @@ const questions = [
     correct: 'Hyper Text Markup Language.'
 },
 {
-    question: 'A _____ is a binary varial that has two possible values called True or False',
+    question: 'A _____ is a binary variable that has two possible values called True or False',
     answerOne: 'Var.',
     answerTwo: 'Object.',
     answerThree: 'Array.',
